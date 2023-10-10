@@ -1,5 +1,6 @@
 package ru.hogwarts.school.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.model.Student;
@@ -33,8 +34,9 @@ public class FacultyController {
     }
 
     @DeleteMapping("/{id}")
-    public boolean remove(@PathVariable long id) {
-        return service.remove(id);
+    public ResponseEntity remove(@PathVariable long id) {
+        service.remove(id);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/byColor")
