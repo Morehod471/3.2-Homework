@@ -38,8 +38,8 @@ public class StudentController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/byAge")
-    public Collection<Student> byAge(@RequestParam int age) {
-        return service.filterByAge(age);
+    @GetMapping("/findByAge")
+    public Collection<Student> findByAge(@RequestParam int age) {
+        return service.findByAge(age);
     }
 }

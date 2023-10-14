@@ -38,8 +38,8 @@ public class FacultyController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/byColor")
-    public Collection<Faculty> byColor(@RequestParam String color) {
-        return service.filterByColor(color);
+    @GetMapping("/findByColor")
+    public Collection<Faculty> findByColor(@RequestParam String color) {
+        return service.findByColor(color);
     }
 }
