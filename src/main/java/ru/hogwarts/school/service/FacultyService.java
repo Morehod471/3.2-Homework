@@ -5,7 +5,6 @@ import ru.hogwarts.school.exception.FacultyNotFoundException;
 import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.repository.FacultyRepository;
 
-import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -23,7 +22,7 @@ public class FacultyService {
 
     public Faculty get(long id) {
         return facultyRepository.findById(id)
-                .orElseThrow(() -> new FacultyNotFoundException("Студент с id = %d не найден"));
+                .orElseThrow(() -> new FacultyNotFoundException("Факультет с id = %d не найден"));
     }
 
     public void remove(long id) {
