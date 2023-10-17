@@ -1,5 +1,6 @@
 package ru.hogwarts.school.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.model.Student;
@@ -33,12 +34,30 @@ public class FacultyController {
     }
 
     @DeleteMapping("/{id}")
-    public boolean remove(@PathVariable long id) {
-        return service.remove(id);
+    public ResponseEntity remove(@PathVariable long id) {
+        service.remove(id);
+        return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/byColor")
-    public Collection<Faculty> byColor(@RequestParam String color) {
-        return service.filterByColor(color);
+    @GetMapping("/findByColor")
+    public Collection<Faculty> findByColor(@RequestParam String color) {
+        return service.findByColor(color);
+    }
+
+    @GetMapping("/findByColorOrName")
+    public ResponseEntity findByColorOrName(@RequestParam (required = false) String color,
+                                            @RequestParam(required = false) String name) {
+        if (color != null && !color.isBlank()) {
+            return ResponseEntity.ok(service.findByColor(color));
+        }
+        if (name != null && !name.isBlank()) {
+            return ResponseEntity.ok(service.findByName(name));
+        }
+        return ResponseEntity.ok(service.getAll());
+    }
+
+    @GetMapping("/{facultyId}/students")
+    public Collection<Student> findByFaculty(@PathVariable long facultyId) {
+        return service.get(facultyId).getStudents();
     }
 }
