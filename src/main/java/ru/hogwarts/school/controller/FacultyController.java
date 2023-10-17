@@ -55,4 +55,9 @@ public class FacultyController {
         }
         return ResponseEntity.ok(service.getAll());
     }
+
+    @GetMapping("/{facultyId}/students")
+    public Collection<Student> findByFaculty(@PathVariable long facultyId) {
+        return service.get(facultyId).getStudents();
+    }
 }

@@ -8,7 +8,7 @@ FROM student;
 
 SELECT *
 FROM student
-WHERE name LIKE '%О%';
+WHERE name LIKE '%o%';
 
 SELECT *
 FROM student
