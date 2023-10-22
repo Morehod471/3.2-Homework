@@ -1,11 +1,14 @@
 package ru.hogwarts.school.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.service.FacultyService;
 
 import java.util.Collection;
+import java.util.Collections;
 
 @RestController
 @RequestMapping("/faculty")
@@ -23,22 +26,34 @@ public class FacultyController {
     }
 
     @GetMapping("/{id}")
-    public Faculty get(@PathVariable long id) {
-        return service.get(id);
+    public ResponseEntity<Faculty> get(@PathVariable long id) {
+        Faculty faculty = service.get(id);
+        if (faculty==null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(faculty);
     }
 
     @PutMapping
-    public Faculty update(@RequestBody Faculty faculty) {
-        return service.update(faculty);
+    public ResponseEntity<Faculty> update(@RequestBody Faculty faculty) {
+        Faculty foundFaculty = service.update(faculty);
+        if (foundFaculty == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        return ResponseEntity.ok(foundFaculty);
     }
 
     @DeleteMapping("/{id}")
-    public boolean remove(@PathVariable long id) {
-        return service.remove(id);
+    public ResponseEntity<Void> remove(@PathVariable long id) {
+        service.remove(id);
+        return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/byColor")
-    public Collection<Faculty> byColor(@RequestParam String color) {
-        return service.filterByColor(color);
+    @GetMapping("/findByColor")
+    public ResponseEntity<Collection<Faculty>> findByColor(@RequestParam(required = false) String color) {
+        if (color != null && !color.isBlank()) {
+            return ResponseEntity.ok(service.filterByColor(color));
+        }
+        return ResponseEntity.ok(Collections.emptyList());
     }
 }
