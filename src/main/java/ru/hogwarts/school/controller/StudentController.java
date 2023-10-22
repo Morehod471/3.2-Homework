@@ -1,5 +1,6 @@
 package ru.hogwarts.school.controller;
 
+import lombok.Getter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.hogwarts.school.model.Faculty;
@@ -14,6 +15,7 @@ import java.util.Collection;
 public class StudentController {
 
     private final StudentService service;
+    @Getter
     private final FacultyService facultyService;
 
     public StudentController(StudentService service, FacultyService facultyService) {
@@ -54,9 +56,5 @@ public class StudentController {
     @GetMapping("/{studentId}/faculty")
     public Faculty facultyByStudent(@PathVariable long studentId) {
         return service.get(studentId).getFaculty();
-    }
-
-    public FacultyService getFacultyService() {
-        return facultyService;
     }
 }
