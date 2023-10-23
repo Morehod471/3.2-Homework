@@ -32,9 +32,9 @@ public class AvatarController {
         return service.downloadAvatar(studentid);
     }
 
-    @GetMapping( "/{id}/avatar-from-file")
-    public void downloadAvatarFromFile(@PathVariable Long id, HttpServletResponse response) throws IOException{
-        service.downloadAvatarFromFile(id, response);
+    @GetMapping( "/{studentid}/avatar-from-file")
+    public void downloadAvatarFromFile(@PathVariable Long studentid, HttpServletResponse response) throws IOException{
+        service.downloadAvatarFromFile(studentid, response);
     }
 }
 
