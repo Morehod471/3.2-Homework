@@ -18,5 +18,9 @@ SELECT *
 FROM student
 ORDER BY age;
 
+SELECT *
+FROM avatar;
+
+
 
 
