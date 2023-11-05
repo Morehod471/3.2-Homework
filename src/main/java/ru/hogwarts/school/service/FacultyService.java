@@ -25,8 +25,8 @@ public class FacultyService {
         return storage.get(id);
     }
 
-    public boolean remove(long id) {
-        return storage.remove(id) != null;
+    public void remove(long id) {
+        storage.remove(id);
     }
 
     public Faculty update(Faculty faculty) {
