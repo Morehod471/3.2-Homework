@@ -33,7 +33,7 @@ public class StudentController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity remove(@PathVariable long id) {
+    public ResponseEntity<Collection<Student>> remove(@PathVariable long id) {
         service.remove(id);
         return ResponseEntity.ok().build();
     }
