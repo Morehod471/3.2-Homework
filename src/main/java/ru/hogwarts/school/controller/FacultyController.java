@@ -34,7 +34,7 @@ public class FacultyController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity remove(@PathVariable long id) {
+    public ResponseEntity<Collection<Faculty>> remove(@PathVariable long id) {
         service.remove(id);
         return ResponseEntity.ok().build();
     }
@@ -45,7 +45,7 @@ public class FacultyController {
     }
 
     @GetMapping("/findByColorOrName")
-    public ResponseEntity findByColorOrName(@RequestParam (required = false) String color,
+    public ResponseEntity<Collection<Faculty>> findByColorOrName(@RequestParam (required = false) String color,
                                             @RequestParam(required = false) String name) {
         if (color != null && !color.isBlank()) {
             return ResponseEntity.ok(service.findByColor(color));
