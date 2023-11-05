@@ -26,7 +26,7 @@ public class StudentService {
     }
 
     public void remove(long id) {
-        studentRepository.deleteById(id);
+        studentRepository.findById(id).ifPresent(studentRepository::delete);
     }
 
     public Student update(Student student) {
