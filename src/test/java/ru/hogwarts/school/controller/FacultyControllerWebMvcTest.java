@@ -47,9 +47,6 @@ public class FacultyControllerWebMvcTest {
     @SpyBean
     FacultyService facultyService;
 
-    @InjectMocks
-    FacultyController facultyController ;
-
     @Test
     public void postFacultyTest() throws Exception {
         Long id = 1L;
