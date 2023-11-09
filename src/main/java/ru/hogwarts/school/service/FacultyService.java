@@ -25,8 +25,13 @@ public class FacultyService {
                 .orElseThrow(() -> new FacultyNotFoundException("Факультет с id = %d не найден"));
     }
 
-    public void remove(long id) {
-        facultyRepository.deleteById(id);
+    public Faculty remove(long id) {
+        var entity = facultyRepository.findById(id).orElse(null);
+        if (entity != null) {
+            facultyRepository.delete(entity);
+            return entity;
+        }
+        return null;
     }
 
     public Faculty update(Faculty faculty) {

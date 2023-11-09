@@ -25,8 +25,12 @@ public class StudentService {
                 .orElseThrow(() -> new StudentNotFoundException("Студент с id = %d не найден"));
     }
 
-    public void remove(long id) {
-        studentRepository.findById(id).ifPresent(studentRepository::delete);
+    public Student remove(long id) {
+        Student entity = studentRepository.findById(id).orElse(null);
+        if (entity != null) {
+            studentRepository.delete(entity);
+        }
+        return entity;
     }
 
     public Student update(Student student) {

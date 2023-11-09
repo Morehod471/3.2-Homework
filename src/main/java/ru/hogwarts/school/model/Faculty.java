@@ -6,11 +6,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Collection;
 import java.util.Objects;
 
 @Getter
+@Setter
 @Entity
 public class Faculty {
 
