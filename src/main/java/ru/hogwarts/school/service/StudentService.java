@@ -34,7 +34,9 @@ public class StudentService {
     }
 
     public Student update(Student student) {
-        return studentRepository.save(student);
+        return studentRepository.findById(student.getId())
+                .map(entity -> studentRepository.save(student))
+                .orElse(null);
     }
 
     public Collection<Student> findByAge(int age) {

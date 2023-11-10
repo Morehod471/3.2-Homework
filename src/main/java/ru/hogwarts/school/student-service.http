@@ -1,0 +1,42 @@
+### Добавление новых студентов
+POST http://localhost:8080/student
+Content-Type: application/json
+
+  {
+    "id": 13,
+    "name": "Abdul",
+    "age": 23
+  }
+
+### Получение суммы зарплат сотрудников
+GET http://localhost:8080/employee/salary/sum
+
+### Получение сотрудника с минимальной зарплатой
+GET http://localhost:8080/employee/salary/min
+
+### Получение сотрудника с максимальной зарплатой
+GET http://localhost:8080/employee/salary/max
+
+### Получение всех сотрудников, зарплата которых больше средней
+GET http://localhost:8080/employee/high-salary
+
+### Получение всех сотрудников
+GET http://localhost:8080/employee/all
+
+### Обновление сотрудника
+PUT http://localhost:8080/employee/5
+Content-Type: application/json
+
+{
+  "name": "Максим",
+  "salary": 95000
+}
+
+### Получение сотрудника
+GET http://localhost:8080/employee/5
+
+### Удаление сотрудника
+DELETE http://localhost:8080/employee/5
+
+### Получение сотрудника с зп выше, чем
+GET http://localhost:8080/employee/salaryHigherThan?salary=80000

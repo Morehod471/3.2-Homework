@@ -35,7 +35,9 @@ public class FacultyService {
     }
 
     public Faculty update(Faculty faculty) {
-        return facultyRepository.save(faculty);
+        return facultyRepository.findById(faculty.getId())
+                .map(entity -> facultyRepository.save(faculty))
+                .orElse(null);
     }
 
     public Collection<Faculty> findByColor(String color) {
