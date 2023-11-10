@@ -2,41 +2,36 @@
 POST http://localhost:8080/student
 Content-Type: application/json
 
-  {
-    "id": 13,
-    "name": "Abdul",
-    "age": 23
-  }
-
-### Получение суммы зарплат сотрудников
-GET http://localhost:8080/employee/salary/sum
-
-### Получение сотрудника с минимальной зарплатой
-GET http://localhost:8080/employee/salary/min
-
-### Получение сотрудника с максимальной зарплатой
-GET http://localhost:8080/employee/salary/max
-
-### Получение всех сотрудников, зарплата которых больше средней
-GET http://localhost:8080/employee/high-salary
-
-### Получение всех сотрудников
-GET http://localhost:8080/employee/all
-
-### Обновление сотрудника
-PUT http://localhost:8080/employee/5
-Content-Type: application/json
-
 {
-  "name": "Максим",
-  "salary": 95000
+  "id": 0,
+  "name": "James",
+  "age": 16,
+  "faculty": {
+    "id": 2,
+    "name": "string",
+    "color": "string"
+  }
 }
 
-### Получение сотрудника
-GET http://localhost:8080/employee/5
+### Получение студента по id
+GET http://localhost:8080/student/1
 
-### Удаление сотрудника
-DELETE http://localhost:8080/employee/5
+### Изменение данных студента
+PUT http://localhost:8080/student
 
-### Получение сотрудника с зп выше, чем
-GET http://localhost:8080/employee/salaryHigherThan?salary=80000
+{
+  "name": "string",
+  "age": 0,
+}
+
+### Удаление студента
+DELETE http://localhost:8080/student/1
+
+### Получение всех студентов в определённом возрасте
+GET http://localhost:8080/student/findByAge?age=16
+
+### Получение всех студентов в возрасте от и до
+GET http://localhost:8080/student/findByAgeBetween?minAge=15&maxAge=23
+
+### Получение факультета студента
+GET http://localhost:8080/student/10/faculty

@@ -1,0 +1,32 @@
+### Добавление новых факультетов
+POST http://localhost:8080/faculty
+Content-Type: application/json
+
+{
+  "id": 5,
+  "name": "MIPT",
+  "color": "black"
+}
+
+### Получение факультета по id
+GET http://localhost:8080/faculty/1
+
+### Изменение данных факультета
+PUT http://localhost:8080/student
+
+{
+  "name": "MIPT",
+  "color": "black"
+}
+
+### Удаление факультета
+DELETE http://localhost:8080/faculty/5
+
+### Получение факультета по цвету
+GET http://localhost:8080/faculty/findByColor?color=green
+
+### Получение факультета по цвету или названию
+GET http://localhost:8080/faculty/findByColorOrName?name=Gryffindor
+
+### Получение списка студентов по факультету
+GET http://localhost:8080/faculty/2/students
