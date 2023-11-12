@@ -35,3 +35,14 @@ GET http://localhost:8080/student/findByAgeBetween?minAge=15&maxAge=23
 
 ### Получение факультета студента
 GET http://localhost:8080/student/10/faculty
+
+### Получение количества студентов в школе
+GET http://localhost:8080/student/countAll
+
+### Получение среднего возраста студентов в школе
+GET http://localhost:8080/student/getAverageAge
+
+### Получение пяти последних студентов
+GET http://localhost:8080/student/getLastStudents
+
+
