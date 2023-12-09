@@ -6,13 +6,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.Collection;
 import java.util.Objects;
 
 @Getter
-@Setter
 @Entity
 public class Faculty {
 
@@ -27,7 +25,28 @@ public class Faculty {
     private Collection<Student> students;
 
     public Faculty() {
+    }
 
+    public Faculty(Long id, String name, String color) {
+        this.id = id;
+        this.name = name;
+        this.color = color;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setStudents(Collection<Student> students) {
+        this.students = students;
     }
 
     @Override
